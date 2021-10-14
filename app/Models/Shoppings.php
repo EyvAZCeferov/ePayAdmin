@@ -15,11 +15,10 @@ class Shoppings extends Model
 {
     use HasFactory, SoftDeletes;
 
-
     protected $fillable = [
         'type',
         'payed',
-        'shopping_address',
+        'shipping_address',
         'pay_type',
         'qrcode',
         'barcode',
@@ -27,7 +26,6 @@ class Shoppings extends Model
         'customer_id',
         'location_id',
         'card_id',
-
     ];
 
     protected $casts = [
@@ -55,7 +53,8 @@ class Shoppings extends Model
         return $this->belongsTo(Cards::class);
     }
 
-    public function products(){
+    public function products()
+    {
         return $this->hasMany(Shopping_items::class);
     }
 }

@@ -19,9 +19,9 @@ class Products extends Model
         'barcode',
         'category',
         'price',
-        'quantity',
         'seo_urls',
         'customer_id',
+        'enabled'
     ];
 
     protected $casts = [
@@ -29,6 +29,7 @@ class Products extends Model
         'descriptors' => 'json',
         'category' => 'json',
         'seo_urls' => 'json',
+        'enabled' => 'boolean'
     ];
 
     public function customer()

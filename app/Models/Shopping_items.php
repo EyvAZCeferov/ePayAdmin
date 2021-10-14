@@ -15,7 +15,12 @@ class Shopping_items extends Model
     protected $fillable = [
         'user_id',
         'shopping_id',
-        'product_id'
+        'product_id',
+        'name',
+        'code',
+        'barcode',
+        'price',
+        'qyt',
     ];
 
     public function user()

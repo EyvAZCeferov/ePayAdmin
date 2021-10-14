@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Setting as ResourcesSetting;
-use App\Models\Setting;
+use App\Http\Resources\TermOfUse as ResourcesTermOfUse;
 use App\Models\TermOfUse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class SettingController extends Controller
+class TermOfUseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +18,8 @@ class SettingController extends Controller
     public function index()
     {
         try {
-            $data = Setting::latest()->first();
-            return new ResourcesSetting($data);
+            $data = TermOfUse::latest()->first();
+            return new ResourcesTermOfUse($data);
         } catch (\Exception $e) {
             return response(["error" => $e->getMessage()], 422);
         }
@@ -103,7 +102,7 @@ class SettingController extends Controller
                 'descriptors' => json_encode($desciptors),
             ];
             TermOfUse::where('id', $id)->update($data);
-            return response(['success' => 'Successfully updated'], 202);
+            return response(['success' => 'Successfully updated'], 200);
         } catch (\Exception $e) {
             return response(["error" => $e->getMessage()], 422);
         }

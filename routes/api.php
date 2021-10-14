@@ -8,7 +8,10 @@ use App\Http\Controllers\Api\CustomersController;
 use App\Http\Controllers\Api\LocationsController;
 use App\Http\Controllers\Api\PartnersController;
 use App\Http\Controllers\Api\ProductsController;
+use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\ShopBagController;
+use App\Http\Controllers\Api\ShoppingsController;
+use App\Http\Controllers\Api\TermOfUseController;
 use App\Http\Controllers\NotificationsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,10 +45,13 @@ Route::resource('locations', LocationsController::class);
 Route::resource('contactus', ContactusController::class);
 Route::resource('partners', PartnersController::class);
 Route::resource('products', ProductsController::class);
+Route::resource('setting', SettingController::class);
+Route::resource('termofuse', TermOfUseController::class);
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::resource('cards', CardsController::class);
     Route::resource('shopp_bag', ShopBagController::class);
     Route::resource('notifications', NotificationsController::class);
     Route::get('notification_view/{id}', [NotificationsController::class, 'notification_view']);
+    Route::resource('shoppings', ShoppingsController::class);
 });

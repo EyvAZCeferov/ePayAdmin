@@ -10,11 +10,11 @@ class TermOfUse extends Model
     use HasFactory;
 
     protected $fillable = [
-        'titles',
+        'names',
         'descriptors'
     ];
     protected $casts = [
-        'titles' => 'json',
+        'names' => 'json',
         'descriptors' => 'json'
     ];
 }

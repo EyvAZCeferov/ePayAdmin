@@ -40,6 +40,7 @@ class Products extends JsonResource
             'ruSeoUrl' => $seoUrls->ru_seo_url,
             'enSeoUrl' => $seoUrls->en_seo_url,
             'customer' => new Customers($this->customer),
+            'enabled' => $this->enabled
         ];
     }
 }

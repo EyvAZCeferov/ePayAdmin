@@ -22,8 +22,8 @@ class CreateProductsTable extends Migration
             $table->string('barcode', 120)->nullable();
             $table->json('category')->nullable();
             $table->float('price')->default(0.0);
-            $table->integer('quantity')->default(1);
             $table->json('seo_urls');
+            $table->boolean('enabled')->default(true);
 
             $table->unsignedBigInteger('customer_id');
             $table->foreign("customer_id")->references("id")->on("customers")->onDelete('cascade');

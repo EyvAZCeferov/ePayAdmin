@@ -9,11 +9,11 @@ class About extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "titles",
-        "descriptors", 
+        "names",
+        "descriptors",
     ];
     protected $casts = [
-        "titles" => 'json',
+        "names" => 'json',
         "descriptors" => 'json',
     ];
 }
