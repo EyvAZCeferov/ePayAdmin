@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\PartnersController;
 use App\Http\Controllers\Api\ProductsController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\ShopBagController;
+use App\Http\Controllers\Api\Shopping_itemsController;
 use App\Http\Controllers\Api\ShoppingsController;
 use App\Http\Controllers\Api\TermOfUseController;
 use App\Http\Controllers\NotificationsController;
@@ -49,9 +50,12 @@ Route::resource('setting', SettingController::class);
 Route::resource('termofuse', TermOfUseController::class);
 
 Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('view_campaign', [CampaignsController::class, 'view_campaign']);
+    Route::get('view_product', [ProductsController::class, 'view_product']);
     Route::resource('cards', CardsController::class);
     Route::resource('shopp_bag', ShopBagController::class);
     Route::resource('notifications', NotificationsController::class);
     Route::get('notification_view/{id}', [NotificationsController::class, 'notification_view']);
     Route::resource('shoppings', ShoppingsController::class);
+    Route::resource('shopping_items', Shopping_itemsController::class);
 });

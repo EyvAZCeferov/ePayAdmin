@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductsCollection;
+use App\Models\Product_Viewer;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -231,6 +232,20 @@ class ProductsController extends Controller
         try {
             Products::where("id", $id)->onlyTrashed()->forceDelete();
             return response(['success' => 'Successfully deleted'], 200);
+        } catch (\Exception $e) {
+            return response(["error" => $e->getMessage()], 422);
+        }
+    }
+
+    public function view_product(Request $request, $campaign_id)
+    {
+        try {
+            $data = [
+                "user_id" => $request->user()->id,
+                "campaign_id" => $campaign_id,
+            ];
+            Product_Viewer::create($data);
+            return response(['success' => 'Successfully Viewed'], 200);
         } catch (\Exception $e) {
             return response(["error" => $e->getMessage()], 422);
         }

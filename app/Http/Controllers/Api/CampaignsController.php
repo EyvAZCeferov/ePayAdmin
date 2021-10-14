@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CampaignsCollection;
 use App\Http\Resources\Campaigns as CampaignsRes;
 use App\Models\Campaigns;
+use App\Models\Campaigns_Viewer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -240,6 +241,20 @@ class CampaignsController extends Controller
         try {
             Campaigns::where("id", $customers)->onlyTrashed()->forceDelete();
             return response(['success' => 'Successfully deleted'], 200);
+        } catch (\Exception $e) {
+            return response(["error" => $e->getMessage()], 422);
+        }
+    }
+
+    public function view_campaign(Request $request, $campaign_id)
+    {
+        try {
+            $data = [
+                "user_id" => $request->user()->id,
+                "campaign_id" => $campaign_id,
+            ];
+            Campaigns_Viewer::create($data);
+            return response(['success' => 'Successfully Viewed'], 200);
         } catch (\Exception $e) {
             return response(["error" => $e->getMessage()], 422);
         }

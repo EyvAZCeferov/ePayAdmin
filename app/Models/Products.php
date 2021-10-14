@@ -36,4 +36,9 @@ class Products extends Model
     {
         return $this->belongsTo(Customers::class);
     }
+
+    public function views()
+    {
+        return $this->hasMany(Product_Viewer::class);
+    }
 }
