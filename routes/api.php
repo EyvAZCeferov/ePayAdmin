@@ -38,6 +38,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post("login", [AuthController::class, 'login'])->name('api.login');
     Route::get("logout", [AuthController::class, 'logout'])->name('api.logout')->middleware('auth:api');
     Route::get("user", [AuthController::class, 'user'])->name('api.user')->middleware('auth:api');
+    Route::get('unauthenticated', [AuthController::class, 'unauthenticated'])->name('unauthenticated');
 });
 
 Route::resource('campaigns', CampaignsController::class);

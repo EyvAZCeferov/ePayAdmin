@@ -33,7 +33,7 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        $this->create_bonuse_card($user);
+        // $this->create_bonuse_card($user);
 
         $device = new Devices();
         $device->user_id = User::latest()->first()->id;
@@ -59,7 +59,7 @@ class AuthController extends Controller
         if (Auth::attempt($creditionals)) {
             $user = $request->user();
 
-            $this->create_bonuse_card($user);
+            // $this->create_bonuse_card($user);
 
             $device = new Devices();
             $device->user_id = $user->id;
@@ -79,7 +79,12 @@ class AuthController extends Controller
 
     public function forgetpass(Request $request)
     {
-        return "forget Pass";
+        $user = User::where('phone', $request->phone)->first();
+        if ($user != null) {
+            return response(['success' => 'User found. Sended SMS'], 200);
+        } else {
+            return response(['error' => 'User not found'], 422);
+        }
     }
 
     public function user(Request $request)
@@ -128,5 +133,10 @@ class AuthController extends Controller
             $code .= mt_rand(0, 9);
         }
         return $code;
+    }
+
+    public function unauthenticated()
+    {
+        return response(['error' => 'Un Authenticated'], 401);
     }
 }
