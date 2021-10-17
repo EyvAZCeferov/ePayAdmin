@@ -16,13 +16,13 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->text("picture")->nullable();
-            $table->json('names');
-            $table->json('descriptors')->nullable();
+            $table->longText('names');
+            $table->longText('descriptors')->nullable();
             $table->string('code', 100)->nullable();
             $table->string('barcode', 120)->nullable();
-            $table->json('category')->nullable();
+            $table->longText('category')->nullable();
             $table->float('price')->default(0.0);
-            $table->json('seo_urls');
+            $table->longText('seo_urls');
             $table->boolean('enabled')->default(true);
 
             $table->unsignedBigInteger('customer_id');

@@ -15,13 +15,13 @@ class CreateCampaignsTable extends Migration
     {
         Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
-            $table->json("pictures")->nullable();
-            $table->json("names");
-            $table->json("descriptors")->nullable();
-            $table->json("dates")->nullable();
-            $table->json('seo_urls');
-            $table->json("related_products")->nullable();
-            $table->json("prices")->nullable();
+            $table->longText("pictures")->nullable();
+            $table->longText("names");
+            $table->longText("descriptors")->nullable();
+            $table->longText("dates")->nullable();
+            $table->longText('seo_urls');
+            $table->longText("related_products")->nullable();
+            $table->longText("prices")->nullable();
             $table->boolean("notify")->default(false);
 
             $table->unsignedBigInteger('customer_id');

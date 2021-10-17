@@ -15,8 +15,8 @@ class CreateTermOfUsesTable extends Migration
     {
         Schema::create('term_of_uses', function (Blueprint $table) {
             $table->id();
-            $table->json("names");
-            $table->json("descriptors");
+            $table->longText("names");
+            $table->longText("descriptors");
             $table->timestamps();
         });
     }

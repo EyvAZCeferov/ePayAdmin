@@ -15,11 +15,11 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->json("names");
+            $table->longText("names");
             $table->string("address",255)->nullable();
-            $table->json("descriptors")->nullable();
-            $table->json("geolocations")->nullable();
-            $table->json("pictures")->nullable();
+            $table->longText("descriptors")->nullable();
+            $table->longText("geolocations")->nullable();
+            $table->longText("pictures")->nullable();
 
             $table->unsignedBigInteger("customers_id");
             $table->foreign("customers_id")->references("id")->on("customers")->onDelete('cascade');

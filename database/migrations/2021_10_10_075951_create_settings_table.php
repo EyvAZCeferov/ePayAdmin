@@ -19,8 +19,8 @@ class CreateSettingsTable extends Migration
             $table->string("project_name",255)->default('ePay');
             $table->string("site_url",255)->default('https://epay.com.az');
             $table->string("site_admin_url",255)->default('https://zlimusu.epay.com.az');
-            $table->json("site_descriptors");
-            $table->json("social_media");
+            $table->longText("site_descriptors");
+            $table->longText("social_media");
             $table->timestamps();
         });
     }

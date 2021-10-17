@@ -1,0 +1,3 @@
+ssh user:payvciuo
+ssh pass:x7X@5kE466yty^68
+ssh rsa_id pass:0Oq3X2Mx.X(G 

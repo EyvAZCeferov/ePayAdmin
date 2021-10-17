@@ -16,10 +16,10 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
 
-            $table->json("titles");
-            $table->json("descriptors");
-            $table->json("urls")->nullable();
-            $table->json("seo_urls")->nullable();
+            $table->longText("titles");
+            $table->longText("descriptors");
+            $table->longText("urls")->nullable();
+            $table->longText("seo_urls")->nullable();
             $table->string("image")->nullable();
 
             $table->unsignedBigInteger("user_id");

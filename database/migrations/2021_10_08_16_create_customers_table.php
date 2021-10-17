@@ -15,11 +15,11 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->json("names");
-            $table->json("descriptors");
+            $table->longText("names");
+            $table->longText("descriptors");
             $table->text("logo")->nullable();
-            $table->json("urls")->nullable();
-            $table->json('seo_urls', 200);
+            $table->longText("urls")->nullable();
+            $table->longText('seo_urls', 200);
             $table->timestamps();
             $table->softDeletes();
         });

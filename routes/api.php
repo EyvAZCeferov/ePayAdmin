@@ -60,3 +60,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::resource('shoppings', ShoppingsController::class);
     Route::resource('shopping_items', Shopping_itemsController::class);
 });
+
+Route::fallback(function () {
+    return "Fallback";
+});
