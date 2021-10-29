@@ -1,0 +1,6 @@
+ftp
+
+username: ftp_user  ||  ftp_user@paygo.az
+pass: x7X@5kE466yty^68  
+server: ftp.payvin.az
+port: 21
